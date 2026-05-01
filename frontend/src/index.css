@@ -1,0 +1,365 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap');
+
+:root {
+  --bg-color: #f0fdf4;
+  --card-bg: #ffffff;
+  --accent-color: #22c55e;
+  --accent-hover: #16a34a;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --font-family: 'Nunito', sans-serif;
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  background-image: radial-gradient(#dcfce7 2px, transparent 2px);
+  background-size: 30px 30px;
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.dashboard-container {
+  width: 100%;
+  max-width: 900px;
+  background: var(--card-bg);
+  border-radius: 32px;
+  box-shadow: var(--shadow-lg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.header {
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: var(--accent-color);
+  margin-bottom: 5px;
+}
+
+.header p {
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.main-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Upload Section */
+.upload-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.drop-zone {
+  border: 4px dashed #bbf7d0;
+  border-radius: 24px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #f8fafc;
+  position: relative;
+  overflow: hidden;
+}
+
+.drop-zone:hover,
+.drop-zone.active {
+  border-color: var(--accent-color);
+  background: #f0fdf4;
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-sm);
+}
+
+.drop-zone input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.drop-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  pointer-events: none;
+}
+
+.icon {
+  color: #4ade80;
+  transition: all 0.3s ease;
+}
+
+.drop-zone:hover .icon {
+  transform: scale(1.1);
+  color: var(--accent-color);
+}
+
+.drop-message p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.drop-message span {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.image-preview-container {
+  border-radius: 24px;
+  overflow: hidden;
+  height: 280px;
+  position: relative;
+  border: 4px solid #f1f5f9;
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.remove-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ef4444;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 6px rgba(239, 68, 68, 0.3);
+  z-index: 20;
+}
+
+.remove-btn:hover {
+  background: #dc2626;
+  transform: scale(1.1) rotate(90deg);
+}
+
+.classify-btn {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  padding: 18px 24px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.4);
+}
+
+.classify-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(34, 197, 94, 0.5);
+}
+
+.classify-btn:disabled {
+  background: #cbd5e1;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Result Section */
+.result-section {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.placeholder-result {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #f8fafc;
+  border: 4px dashed #e2e8f0;
+  border-radius: 24px;
+  color: var(--text-secondary);
+  gap: 20px;
+  padding: 40px;
+  text-align: center;
+}
+
+.placeholder-result h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #94a3b8;
+}
+
+.result-card {
+  height: 100%;
+  background: #ffffff;
+  border: 4px solid #f1f5f9;
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fruit-title {
+  font-size: 3rem;
+  font-weight: 800;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.confidence-badge {
+  background: #dcfce7;
+  color: #166534;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.student-card {
+  width: 100%;
+  background: #f8fafc;
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-left: 8px solid;
+  transition: transform 0.2s;
+}
+
+.student-card:hover {
+  transform: translateX(5px);
+}
+
+.student-card-icon {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.student-card-content h4 {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.student-card-content p {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+/* Loading Spinner */
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid white;
+  width: 28px;
+  height: 28px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    flex-direction: column;
+  }
+}
