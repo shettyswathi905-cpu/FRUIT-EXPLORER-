@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+
 # Fruit Image Classifier
 
 A real-time Fruit Classification AI model with a modern, dynamic React Dashboard.
 
-## 🚀 How to Run the Application
+##  How to Run the Application
 
 The application consists of two parts: the **Python Backend** and the **React Frontend**. You need to run both simultaneously in separate terminal windows.
 
@@ -32,7 +32,7 @@ npm run dev
 2. Drag and drop any fruit image (like an apple, banana, or orange) into the upload area.
 3. Click the **"Identify Fruit"** button and watch the AI classify it in real-time!
 
-## 🧠 Training Your Own Model (Optional)
+##  Training Your Own Model (Optional)
 If you want to train the model on your own dataset instead of using the pre-trained fallback model:
 1. Place your images in `backend/dataset/train/<fruit_name>/...`
 2. Run the training script:
@@ -86,6 +86,3 @@ Fruit Explorer is a deep learning-based image classification system that uses a 
 - Hands-on experience in image classification  
 - Model training and prediction workflow  
 - Integration of ML model with web interface  
-
-
->>>>>>> 1837f8ae974511649a34195ac2b05d2ace1e4599
